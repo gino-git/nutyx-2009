@@ -1,0 +1,21 @@
+# Description: at, batch - queue, examine or delete jobs for later execution
+# URL: http://ftp.debian.org/debian/pool/main/a/at/
+# Maintainer: NuTyX core team
+# Packager: thierryn1 at hispeed dot ch
+# Depends on: exim
+
+name=at
+version=3.1.10.2
+release=1
+source=(ftp://ftp.debian.org/debian/pool/main/a/$name/${name}_$version.tar.gz \
+        atd)
+
+build() {
+  cd $name-$version
+#  export SENDMAIL=/usr/sbin/sendmail
+  ./configure --prefix=/usr
+  make IROOT=$PKG install
+  rm -rf $PKG/usr/doc
+  install -D -m 0755 $SRC/atd $PKG/etc/rc.d/init.d/atd
+}
+

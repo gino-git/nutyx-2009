@@ -1,0 +1,45 @@
+#!/bin/sh
+########################################################################
+# Begin $rc_base/init.d/
+#
+# Description : Daemon permettant le lancement différé de commandes
+#
+# Authors     : thierryn1 at hispeed dot ch
+#
+# Version     : 00.00
+#
+# Notes       :
+#
+########################################################################
+
+. /etc/sysconfig/rc
+. ${rc_functions}
+
+case "${1}" in
+	start)
+		boot_mesg "Starting atd..."
+		loadproc /usr/sbin/atd
+		;;
+
+	stop)
+		boot_mesg "Stopping atd..."
+		killproc /usr/sbin/atd
+		;;
+
+	restart)
+		${0} stop
+		sleep 1
+		${0} start
+		;;
+
+	status)
+		statusproc
+		;;
+
+	*)
+		echo "Usage: ${0} {start|stop|restart|status}"
+		exit 1
+		;;
+esac
+
+# End $rc_base/init.d/

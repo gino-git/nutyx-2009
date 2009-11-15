@@ -5,7 +5,7 @@
 # Depends on: bison, curl, dbus, gconf, gnome-vfs, gperf, gstreamer, gst-plugins-base, gtk, gtk-doc, icu, libpng, openssl, orbit2, pango, enchant, libsoup
 
 name=webkit
-version=r44282
+version=r50616
 release=1
 source=(http://builds.nightly.webkit.org/files/trunk/src/WebKit-$version.tar.bz2)
 

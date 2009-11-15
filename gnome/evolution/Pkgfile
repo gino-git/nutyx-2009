@@ -1,16 +1,15 @@
-# Description: client messagerie 
-# Maintainer: Matt Housh, jaeger at morpheus dot net
+# Description: client de messagerie electronique
+# Maintainer: NuTyX core team
+# Packager: thierryn1 at hispeed dot ch
 # Depends on: gtk-doc, gtkhtml, gnome-doc-utils, evolution-data-server, nss, hal, dbus-glib, gstreamer, libnotify, intltool
-# Group: gnome/desktop
 
 name=evolution
-version=2.26.3
+version=2.28.1
 release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/evolution/2.26/$name-$version.tar.bz2 configure.patch)
+source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$version.tar.bz2)
 
 build() {
 	cd $name-$version
-	patch -Np0 -i ../configure.patch
 	./configure --prefix=$GNOME_PREFIX \
 		--sysconfdir=/etc \
             --libexecdir=$GNOME_PREFIX/lib/ \
